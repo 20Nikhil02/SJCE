@@ -1,55 +1,46 @@
-#Write a Python program to implement the Best First Search (BFS) algorithm.
-import heapq
+from queue import PriorityQueue
 
-def best_first_search(graph, start, goal):
-    frontier = [(0, start)]
-    explored = set()
+def best_first_search(graph, start, goal, heuristic):
+    visited = set()
+    pq = PriorityQueue()
+    pq.put((heuristic[start], start))
+    
+    while not pq.empty():
+        _, node = pq.get()
+        
+        if node == goal:
+            print("Goal reached!")
+            return
+        
+        if node not in visited:
+            print("Visiting node:", node)
+            visited.add(node)
+            
+            for neighbor, _ in graph[node]:
+                if neighbor not in visited:
+                    pq.put((heuristic[neighbor], neighbor))
+    
+    print("Goal not found!")
 
-    while frontier:
-        (cost, current_node) = heapq.heappop(frontier)
-
-        if current_node == goal:
-            return cost
-
-        explored.add(current_node)
-        print(f"Explored node: {current_node}")
-
-        for neighbor, neighbor_cost in graph[current_node]:
-            # Check if the neighbor is not in the explored set and not in the frontier
-            if neighbor not in explored and neighbor not in [node[1] for node in frontier]:
-                # Add the neighbor to the frontier with its priority being its heuristic cost
-                heapq.heappush(frontier, (neighbor_cost+cost, neighbor))
-                print(f"Added node {neighbor} to frontier with cost {neighbor_cost}")
-
-    # If the goal cannot be reached, return None
-    return None
-
-# Example graph
+# Example graph representation using adjacency list
 graph = {
-    'A': [('B', 5), ('C', 6)],
-    'B': [('D', 4), ('E', 7)],
-    'C': [('F', 9), ('G', 8)],
-    'D': [('H', 3)],
-    'E': [('I', 6)],
-    'F': [('J', 5)],
-    'G': [('K', 7)],
-    'H': [('L', 1)],
-    'I': [('M', 2)],
-    'J': [('N', 3)],
-    'K': [('O', 4)],
-    'L': [],
-    'M': [],
-    'N': [],
-    'O': [('P', 1)],
-    'P': []
+    'A': [('B', 4), ('C', 2)],
+    'B': [('A', 4), ('D', 5)],
+    'C': [('A', 2), ('E', 3)],
+    'D': [('B', 5), ('E', 1)],
+    'E': [('C', 3), ('D', 1)]
 }
 
-start = input("Enter the start node: ")
-goal = input("Enter the goal node: ")
+start_node = 'A'
+goal_node = 'E'
 
-result = best_first_search(graph, start, goal)
+#Heuristic values from curr node -> goal node
+heuristic_values = {
+    'A': 5,
+    'B': 3,
+    'C': 2,
+    'D': 4,
+    'E': 0
+}
 
-if result is not None:
-    print(f"The minimum cost from {start} to {goal} is {result}.")
-else:
-    print(f"There is no path from {start} to {goal}.")          
+best_first_search(graph, start_node, goal_node, heuristic_values)
