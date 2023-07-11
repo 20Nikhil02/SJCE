@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        .full {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 3fr 3fr;
+            height: 100%;
+        }
+
+        table {
+            padding: 20px;
+            border: solid 2px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: center;
+            border: solid;
+            padding: 6px;
+            border-collapse: collapse;
+        }
+
+        .left {
+            position: initial;
+            padding: 20px;
+            background-color: rgb(39, 1, 122);
+            color: white;
+        }
+
+        .right {
+            position: initial;
+            padding: 20px;
+            margin-left: 5px;
+            background-color: blueviolet;
+        }
+        .nam{
+            display: flex;
+            float: right;
+        }
+        .nam div{
+            padding: 10px;
+        }
+        h1{
+            color: blueviolet;
+        }
+
+        h3{
+            color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full">
+        <div class="left">
+            
+            <img src="github.jpg" >
+            <div>
+                <h1>Nikhil Nayak B V</h1>
+                <p>I am a Computer Science Student,good Listener</p><br>
+            </div>
+            <h3>Personal Information:</h3>
+            <address>Mail ID: nikhilnayakbv55@gmail.com</address>
+            GitHub as : <a href="https://github.com/20Nikhil02/">20nikhil02</a>
+            <address>Address: Vijayanagar 1st Stag, Mysore Karnataka</address>
+            <br>
+            <h3>Educational Background</h3>
+            <div>
+                <table>
+                    <tr>
+                        <th>Passed</th>
+                        <th>Institute</th>
+                        <th>Percentage</th>
+                    </tr>
+                    <tr>
+                        <td>SSLC</td>
+                        <td>Anantha Geetha Vidyalaya</td>
+                        <td>91</td>
+                    </tr>
+                    <tr>
+                        <td>PUC</td>
+                        <td>Marimallappa's PU College</td>
+                        <td>91</td>
+                    </tr>
+                    <tr>
+                        <td>BE</td>
+                        <td>SJCE</td>
+                        <td>9.2</td>
+                    </tr>
+                </table>
+                <h3>Languages</h3>
+                <ul>
+                    <li>Kannada</li>
+                    <li>English</li>
+                    <li>Hindi</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <h3>Skills</h3>
+            <ul>
+                <li>Programming Skills
+                    <ul>
+                        <li>C Programming</li>
+                        <li>Java Programming</li>
+                        <li>Python</li>
+                    </ul>
+                </li>
+                <li>Web Development</li>
+                <li>Soft Skills</li>
+            </ul>
+            <h3>Projects</h3>
+            <h4>Car Rental Website</h4>
+            <p>This is the full-stack project of frontend and backend. Frontend was
+                done using HTML, Javascript, CSS and Bootstrap.The backend was
+                developed using MongoDB and frontend and backend was
+                connected using nodejs and express js. </p>
+
+            <h4>Hotel Room Booking</h4>
+            <p>This is my first project on JAVA project developed using Swings ,
+                Collections and DataBase . </p>
+        </div>
+    </div>
+</body>
+
+</html>
